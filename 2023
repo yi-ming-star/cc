@@ -1,44 +1,6 @@
 # 0. 鼠鼠我啊，要被祸害了
 有1000瓶水，其中有一瓶有毒，小白鼠只要尝一点带毒的水，24小时后就会准时死亡。至少要多少只小白鼠才能在24小时内鉴别出哪瓶水有毒？         
 每只小白鼠有 “存活” 和 “死亡” 两种状态，可对应二进制的 “0” 和 “1”。10 只小白鼠能表示的状态组合为 pow(2,10)=1024 种，足以覆盖 1000 瓶水的编码需求（1024 ≥ 1000）。                          
-#include <stdio.h>
-#include <stdlib.h>
-#include <time.h>
-int generatePoisonBottle() {
-    srand(time(0));
-    return rand() % 1000 + 1; 
-int main() {
-    int poison = generatePoisonBottle(); 
-    int mice[10] = {0}; 
-    printf("有毒的瓶号是: %d\n", poison);
-    printf("二进制表示为: ");
-    for(int i = 9; i >= 0; i--) {
-        printf("%d", (poison >> i) & 1);
-    }
-    printf("\n\n");
-    for(int i = 0; i < 10; i++) {
-        if(poison & (1 << (9 - i))) {
-            mice[i] = 1; 
-        }
-    }
-    printf("小白鼠状态(0=存活,1=死亡):\n");
-    for(int i = 0; i < 10; i++) {
-        printf("第%d只: %d  ", i + 1, mice[i]);
-        if((i + 1) % 5 == 0) printf("\n");
-    }
-    printf("\n\n");
-    int result = 0;
-    for(int i = 0; i < 10; i++) {
-        if(mice[i]) {
-            result += (1 << (9 - i)); // 死亡的小白鼠对应二进制位为1
-        }
-    }
-    printf("通过小白鼠状态推断出的有毒瓶号是: %d\n", result);
-    return 0;
-}
-
-
-
 ---
 # 1. 先预测一下~
 
