@@ -8,53 +8,6 @@
 而剩下的香蕉要一次带回，所以50-x<=100-3x<=50;    
 解得到16.67<=x<=25;    
 所以最多为49-33=16；    
-代码实现： 
----   
-#include <stdio.h>     
-int main() {      
-    int total_bananas = 100;  // 初始香蕉总数     
-    int distance = 50;        // 到家的总距离     
-    int max_carry = 50;       // 每次最多搬运的香蕉数    
-    int current_position = 0; // 当前位置    
-    // 当香蕉数量超过单次最大携带量时，需要往返运输    
-    while (total_bananas > max_carry && current_position < distance) {   
-        // 计算需要往返的次数（每次往返能运输的香蕉量）    
-        int trips = (total_bananas + max_carry - 1) / max_carry;  // 向上取整   
-        int effective_trips = 2 * trips - 1;  // 往返总次数（最后一次不需要返回）   
-        // 计算这段距离最多能前进多少米    
-        // 每米消耗 effective_trips 根香蕉    
-        int max_step;    
-        if (total_bananas - max_carry > 0) {    
-            // 确保前进后剩余香蕉不超过最大携带量     
-            max_step = (total_bananas - max_carry) / effective_trips;      
-        } else {      
-            // 剩余距离     
-            max_step = distance - current_position;      
-        }     
-        // 不能超过剩余距离    
-        if (current_position + max_step > distance) {     
-            max_step = distance - current_position;    
-        }   
-        // 确保至少前进1米（避免无限循环）   
-        if (max_step == 0) {    
-            max_step = 1;    
-        }    
-        // 计算消耗的香蕉和剩余的香蕉    
-        int consumed = effective_trips * max_step;    
-        total_bananas -= consumed;    
-        current_position += max_step;     
-        printf("前进 %d 米，消耗 %d 根香蕉，剩余香蕉: %d 根，当前位置: %d 米\n",       
-               max_step, consumed, total_bananas, current_position);                                                        }
-    // 剩余距离直接运输     
-    int remaining_distance = distance - current_position;     
-    int final_bananas = total_bananas - remaining_distance;     
-    if (final_bananas < 0) {     
-        final_bananas = 0;  // 香蕉不够到家     
-    }      
-    printf("剩余 %d 米，直接运输消耗 %d 根香蕉\n", remaining_distance, remaining_distance);     
-    printf("最多能带回家的香蕉数量: %d 根\n", final_bananas);     
-    return 0;       
-}    
 --- 
 # 1. 西邮Linux欢迎你啊
 
