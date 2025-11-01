@@ -3,56 +3,7 @@
 一只企鹅在爬山，每隔一段路都会遇到一块石头。第 1 块石头重量是 a，每往上走一段路，石头重量就会变成上一段的平方。企鹅可以选择把某些石头捡起来，最后把捡到的石头重量相乘。
 
 它怎样捡石头，才能得到重量乘积恰好是 a 的 b 次方的石头？（比如 b = 173 时， 要捡哪些石头？）
-将指数b转化成二进制数，1+4+8+32+128=173          
-#include <stdio.h>       
-#include <stdlib.h>            
-
-// 功能：根据目标指数b，计算需要捡的石头序号（序号从1开始）       
-// 参数：b为目标指数，result用于存储结果（石头序号），返回值为需要捡的石头数量              
-int findStones(int b, int* result) {          
-    if (b == 0) {          
-        return 0; // 特殊情况：b=0无需捡任何石头（a^0=1）         
-    }              
-            
-    int count = 0; // 记录需要捡的石头数量            
-    int bitPos = 0; // 记录当前二进制位的位置（从0开始）             
-    // 遍历b的二进制每一位        
-    while (b > 0) {          
-        // 检查当前位是否为1          
-        if (b & 1) {               
-            result[count] = bitPos + 1; // 石头序号 = 位号 + 1             
-            count++;           
-        }          
-        // 右移一位，检查下一个二进制位            
-        b >>= 1;        
-        bitPos++;         
-    }          
-    return count;             
-}      
-int main() {         
-    int b;         
-    printf("请输入目标指数b：");          
-    scanf("%d", &b);        
-    // 最多需要log2(b)+1块石头，动态分配空间         
-    int* stones = (int*)malloc(32 * sizeof(int)); // 32位整数足够覆盖大部分情况         
-    int stoneCount = findStones(b, stones);         
-    // 输出结果           
-    if (stoneCount == 0) {           
-        printf("无需捡任何石头（结果为a^0=1）\n");            
-    } else {          
-        printf("需要捡的石头序号（从1开始）：");         
-        for (int i = 0; i < stoneCount; i++) {           
-            printf("%d ", stones[i]);        
-        }           
-        printf("\n");            
-    }           
-    free(stones); // 释放动态内存          
-    return 0;      
-}         
----
-
-
-
+将指数b转化成二进制数，1+4+8+32+128=173                   
 ---
 
 # 1. 西邮Linux欢迎你啊
