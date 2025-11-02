@@ -112,28 +112,30 @@ typedef int (*Predicate)(int);
 int *filter(int *array, int length, Predicate predicate,
             int *resultLength); /*补全函数*/
             {
-             if (array == NULL || predicate == NULL || resultLength == NULL || length < 0) {
-              if (resultLength != NULL) {  
-             *resultLength = 0;
-               return NULL;
-                                          }
-            *resultLength=0;
-           for(int i=0;i<length;i++)
-            {if(Predicate(array[i]))
-            (*resultLength)++;
-            }
-            int *result=(int *)malloc(*resultLength*sizeof(int));
-            if(result==NULL)
-            {*resultLength=0;
-            return NULL;  
-            }
-            int a=0;
-            for(int i=0;i<length;i++)
-            {if(predicate(array[i]))
-            result[a++]=array[i];
-            }
-            free(
-            return result;
+                 if (array == NULL || predicate == NULL || resultLength == NULL || length < 0)
+                 {
+                      if (resultLength != NULL) 
+                     {
+                         *resultLength = 0;
+                           return NULL;
+                     }
+                 }
+                *resultLength=0;
+               for(int i=0;i<length;i++)
+                    {if(Predicate(array[i]))
+                    (*resultLength)++;
+                    }
+                    int *result=(int *)malloc(*resultLength*sizeof(int));
+                        if(result==NULL)
+                        {*resultLength=0;
+                        return NULL;  
+                        }
+                int a=0;
+                for(int i=0;i<length;i++)
+                    {   if(predicate(array[i]))
+                        result[a++]=array[i];
+                    }
+                return result;
             }
 int isPositive(int num) { return num > 0; }
 int main(void) {
