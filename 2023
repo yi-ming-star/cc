@@ -112,6 +112,12 @@ typedef int (*Predicate)(int);
 int *filter(int *array, int length, Predicate predicate,
             int *resultLength); /*补全函数*/
             {
+             if (array == NULL || predicate == NULL || resultLength == NULL || length < 0) {
+              if (resultLength != NULL) {  
+             *resultLength = 0;
+                           }
+        return NULL;
+    }
             *resultLength=0;
            for(int i=0;i<length;i++)
             {if(Predicate(array[i]))
@@ -127,6 +133,7 @@ int *filter(int *array, int length, Predicate predicate,
             {if(predicate(array[i]))
             result[a++]=array[i];
             }
+            free(
             return result;
             }
 int isPositive(int num) { return num > 0; }
@@ -183,12 +190,12 @@ int main(void) {
 数组指针：一个指向数组的指针 指针数组：一个存储指针的数组 函数指针：一个指向函数的指针                   
 int (*p)[10];//数组指针                   
 const int* p[10];//指针数组                       
-int (*f1(int))(int*, int);f1是一个接受参数为int类型，返回一个指向的函数的接受值为int *类型和int 类型，返回值为int 类型的函数指针                     
+int (*f1(int))(int*, int);f1是一个接受参数为int类型，返回一个指向接受值为int *类型和int 类型的函数的函数指针，返回值为int 类型的函数声明                    
 ---
 # 9. 咋不循环了
 
 程序直接运行，输出的内容是什么意思？                     
-                
+ i=0,j=1,k=2                
 int main(int argc, char* argv[]) {                    
     printf("[%d]\n", argc);//argc的初始值为1 打印[1]                  
     while (argc) {//直到argc的值为0时跳出循环                      
