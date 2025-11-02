@@ -166,7 +166,7 @@ int main() {
 int (*registry[1])(int);//一个能装下 1 个函数指针的数组
 int main(int argc) {
     if (argc > 2e3) return 0;
-    printf("%d ", argc + 1);打印2,4,8,16,32,64,128,256,512,1024
+    printf("%d ", argc + 1);打印2,4,5,11,23，，，，
     *registry = (int(*)(int))main；//将main函数的地址存入registry数组中
     CALL_MAIN(registry, DOUBLE(argc + 1));//*registry=registry[0],(int (*)(int))强制类型转化为接收类型为int,返回类型为int的函数指针，即main(DOUBLE(argc + 1)),递归调用main函数
      return 0;
