@@ -191,7 +191,7 @@ int (*f1(int))(int*, int);f1是一个接受参数为int类型，返回一个指�
                 
 int main(int argc, char* argv[]) {                    
     printf("[%d]\n", argc);//argc的初始值为1 打印[1]                  
-    while (argc) {直到argc的值为0时跳出循环                      
+    while (argc) {//直到argc的值为0时跳出循环                      
       ++argc;                                      
     }                    
     int i = -1, j = argc, k = 1;               
