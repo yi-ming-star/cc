@@ -88,12 +88,12 @@ int main(void) {
 这个func()函数的功能是什么？是如何实现的？                     
 
 int func(int a, int b) {                                            
-    if (!a) return b;                
-    return func((a & b) << 1, a ^ b);              
+    if (!a) return b;     //当a为0时，返回b;           
+    return func((a & b) << 1, a ^ b);  第一次递归调用为（18,0）            
 }
 int main(void) {             
     int a = 4, b = 9, c = -7;              
-    printf("%d\n", func(a, func(b, c)));               
+    printf("%d\n", func(a, func(b, c))); //fun(4,fun(9,-7))=6              
 }    
 位运算(补码的运算)          
 a^b:a,b二进制数不同则为1       
@@ -115,9 +115,8 @@ int *filter(int *array, int length, Predicate predicate,
              if (array == NULL || predicate == NULL || resultLength == NULL || length < 0) {
               if (resultLength != NULL) {  
              *resultLength = 0;
-                           }
-        return NULL;
-    }
+               return NULL;
+                                          }
             *resultLength=0;
            for(int i=0;i<length;i++)
             {if(Predicate(array[i]))
