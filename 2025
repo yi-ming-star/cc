@@ -166,7 +166,7 @@ int main() {
 int (*registry[1])(int);//一个能装下 1 个函数指针的数组
 int main(int argc) {
     if (argc > 2e3) return 0;
-    printf("%d ", argc + 1);
+    printf("%d ", argc + 1);打印2,4,8,16,32,64,128,256,512,1024
     *registry = (int(*)(int))main；//将main函数的地址存入registry数组中
     CALL_MAIN(registry, DOUBLE(argc + 1));//*registry=registry[0],(int (*)(int))强制类型转化为接收类型为int,返回类型为int的函数指针，即main(DOUBLE(argc + 1)),递归调用main函数
      return 0;
@@ -199,28 +199,32 @@ int len;
 void your_concat(int arr1[],int len1,int arr2[],int len2,struct result *result)
 {result->len=len1+len2;
 result->arr=(int *)malloc(sizeof(int)*len);
-if(result->arr==NULL)
-{result->len=0;
-return 0;}
+    if(result->arr==NULL)
+        {result->len=0;
+        return 0;}
 for(int i=0;i<len1;i++)
 {arr[i]=arr1[i];}
 for(int j=0;j<len2;j++)
-{arr[len1+j]=arr2[j]}
+{arr[len1+j]=arr2[j]；}
 void your_sort(struct result *result)
 {for(int i=0;i<result->len;i++)
-{for(int j=i+1;j<result->len;j++)
-{if(arr[i]>arr[j])
-{int temp=arr[i];
-arr[i]=arr[j];
-arr[j]=temp;}
+    {for(int j=i+1;j<result->len;j++)
+        {if(arr[i]>arr[j])
+            {int temp=arr[i];
+            arr[i]=arr[j];
+            arr[j]=temp;}
+         }
+    }
+}
 void your_dedup(struct result *result)
 {if (result->len <= 1 || result->arr == NULL) 
         {return 0; }
 int *arr = result->arr;
 int a=0;
 for(int i=0;i<result->len-1;i++)
-{if(arr[i]!=arr[i+1])
-{arr[a++]=arr[i]}}
+ {   if(arr[i]!=arr[i+1])
+    {arr[a++]=arr[i]}
+}
 arr[a++] = arr[result->len - 1];
 result->len = a;
  int *temp = (int*)realloc(arr, a * sizeof(int));
