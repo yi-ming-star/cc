@@ -22,7 +22,10 @@ int main() {
 # 2. 可以和 \0 组一辈子字符串吗？    
 
 你能找到成功打印的语句吗？你能看出每个 if 中函数的返回值吗？这些函数各有什么特点？    
-
+sizeof 是 C/C++ 中的一个编译时运算符（不是函数），用于计算变量、数据类型或表达式结果在内存中占用的字节数。
+其工作原理与编译过程紧密相关，核心是 “在编译阶段确定大小，不执行表达式”。
+strlen 的核心工作原理是：运行时从字符串起始地址遍历，以 '\0' 为终止标志，计数有效字符个数（不含 '\0'）。
+使用时必须确保字符串以 '\0' 结尾，否则会出现未定义行为；
 int main() {      
     char p1[] = { 'W', 'e', 'l', 'c', 'o', 'm', 'e', '\0' };    
     char p2[] = "Join us\0", p4[] = "xiyou_linux_group";     
@@ -53,8 +56,8 @@ strlen(p3)为17,sizeof(p3)为8,所以strlen(p3)>sizeof(p3),if的表达式为真�
 
 int main() {    
     float a1 = 0.3, b1 = 6e-1, sum1 = 0.9;     
-    printf("a1 + b1 %s sum1\n", (a1 + b1 == sum1) ? "==" : "!=");//因为二进制数不能完全表示十进制数，所以存在误差；导致0.3+0.6！=0.9；   
-    float a2 = 0x0.3p0, b2 = 0x6p-4, sum2 = 0x0.9p0;//使用十六进制数转化为十进制数精度高      
+    printf("a1 + b1 %s sum1\n", (a1 + b1 == sum1) ? "==" : "!=");//浮点数进制转化导致精度损失，以至于0.3+0.6！=0.9   
+    float a2 = 0x0.3p0, b2 = 0x6p-4, sum2 = 0x0.9p0;//十六进制是二进制的直观表示形式  ，精度没有丢失   
     printf("a2 + b2 %s sum2\n", (a2 + b2 == sum2) ? "==" : "!=");     
     return 0;     
 }    
@@ -164,9 +167,9 @@ int (*registry[1])(int);//一个能装下 1 个函数指针的数组
 int main(int argc) {
     if (argc > 2e3) return 0;
     printf("%d ", argc + 1);
-    *registry = (int(*)(int))main;
-    CALL_MAIN(registry, DOUBLE(argc + 1));
-    return 0;
+    *registry = (int(*)(int))main；//将main函数的地址存入registry数组中
+    CALL_MAIN(registry, DOUBLE(argc + 1));//*registry=registry[0],(int (*)(int))强制类型转化为接收类型为int,返回类型为int的函数指针，即main(DOUBLE(argc + 1)),递归调用main函数
+     return 0;
 }
 
 # 10. 拼接 排序 去重
@@ -189,61 +192,8 @@ int main() {
     free(result.arr);
     return 0;
 }
-void your_concat(int arr1[], int len1, int arr2[], int len2, struct result res) {
-    res.len = len1 + len2;  
-    res.arr = (int *)malloc(res.len * sizeof(int));
-    if (res.arr == NULL) {
-        res.len = 0;
-        return;
-    }
-    memcpy(res.arr, arr1, len1 * sizeof(int))；
-    memcpy(res.arr + len1, arr2, len2 * sizeof(int));
-}
-int compare(const void *a, const void *b) {
-    return *(int *)a - *(int *)b;
-}
 
-void your_sort(struct result res) {
-    if (res.len <= 1 || res.arr == NULL) return;  
-    qsort(res.arr, res.len, sizeof(int), compare);
-}
 
-void your_dedup(struct result res) {
-    if (res.len <= 1 || res.arr == NULL) return;  
-    int unique_len = 1;
-    for (int i = 1; i < res.len; i++) {
-        if (res.arr[i] != res.arr[i - 1]) {
-            unique_len++;
-        }
-    }
-
-    int *temp = (int *)malloc(unique_len * sizeof(int));
-    if (temp == NULL) {
-        res.len = 0;
-        free(res.arr);
-        res.arr = NULL;
-        return;
-    }
-
-    temp[0] = res.arr[0];
-    int index = 1;
-    for (int i = 1; i < res.len; i++) {
-        if (res.arr[i] != res.arr[i - 1]) {
-            temp[index++] = res.arr[i];
-        }
-    }
-
-    free(res.arr);
-    res.arr = temp;
-    res.len = unique_len;
-}
-
-void print_result(struct result res) {
-    for (int i = 0; i < res.len; i++) {
-        printf("%d ", res.arr[i]);
-    }
-    printf("\n");
-}
 
 
 # 11. 指针魔法
