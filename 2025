@@ -192,6 +192,42 @@ int main() {
     free(result.arr);
     return 0;
 }
+struct result
+{int *arr;
+int len;
+}
+void your_concat(int arr1[],int len1,int arr2[],int len2,struct result *result)
+{result->len=len1+len2;
+result->arr=(int *)malloc(sizeof(int)*len);
+if(result->arr==NULL)
+{result->len=0;
+return 0;}
+for(int i=0;i<len1;i++)
+{arr[i]=arr1[i];}
+for(int j=0;j<len2;j++)
+{arr[len1+j]=arr2[j]}
+void your_sort(struct result *result)
+{for(int i=0;i<result->len;i++)
+{for(int j=i+1;j<result->len;j++)
+{if(arr[i]>arr[j])
+{int temp=arr[i];
+arr[i]=arr[j];
+arr[j]=temp;}
+void your_dedup(struct result *result)
+{if (result->len <= 1 || result->arr == NULL) 
+        {return 0; }
+int *arr = result->arr;
+int a=0;
+for(int i=0;i<result->len-1;i++)
+{if(arr[i]!=arr[i+1])
+{arr[a++]=arr[i]}}
+arr[a++] = arr[result->len - 1];
+result->len = a;
+ int *temp = (int*)realloc(arr, a * sizeof(int));
+ if (temp != NULL) {
+ result->arr = temp;
+    }
+}
 
 
 
