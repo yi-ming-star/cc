@@ -1,0 +1,17 @@
+# 把分钟表示的时间转换成用小时和分钟表示的时间     
+#include<stdio.h>    
+#define a 60     
+int main()     
+{int t=1;     
+    while(t>0)     
+    {        
+        scanf("%d",&t);          
+        if(t<=0) {break;}          
+        int h=t/a;         
+        int m=t%a;        
+        printf("%dh %dm\n",h,m);          
+    }         
+           
+}         
+---
+#
