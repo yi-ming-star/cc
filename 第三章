@@ -9,3 +9,25 @@ int main() {
 }       
 ----
 # 单位转化
+#include<stdio.h>   
+int main()   
+{    
+    double a;   
+    char b;    
+    scanf("%lf  %c",&a,&b);   
+    switch(b)   
+    {   
+        case 'b' :    
+        printf("%.2lfb",a*2);    
+        break;          
+        case 'c'  :      
+        printf("%.2lfc",a*2*8);       
+        break;          
+        case 'd'  :    
+        printf("%.2lfd",a*2*8*2);      
+        break;      
+        case 'f'  :          
+        printf("%.2lff",a*2*8*2*3);       
+        break;        
+    }         
+}         
