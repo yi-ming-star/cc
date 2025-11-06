@@ -63,6 +63,20 @@ int main()
 }
 ---
 # 求每部分和
-
+#include<stdio.h>
+int main()
+{
+    double a[8];
+    double b[8];
+    for(int i=0 ; i<8 ; i++) {
+        scanf("%lf",&a[i]);
+        b[i]=a[i];
+    }
+    for(int j=1 ; j<8 ; j++) {
+        b[j]+=b[j-1];
+    }
+    for(int m=0 ; m<8 ; m++) {
+        printf("%lf %lf\n",a[m],b[m]);
+    }
 
 
