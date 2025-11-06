@@ -14,4 +14,23 @@ int main()
            
 }         
 ---
-#
+# 温度单位转化
+#include <stdio.h>     
+void temperatures(double x);       
+int main() {          
+    double x;        
+    while (scanf("%lf", &x) == 1) {           
+        temperatures(x);        
+    }         
+    return 0;      
+}      
+            
+void temperatures(double x) {           
+    const double a = 5.0;             
+    const double b = 9.0;        
+    const double c = 32.0;         
+    const double d = 273.16;         
+    double celsius = a / b * (x - c);            
+    double kelvin = celsius + d;          
+    printf("华氏温度 = %.2lf    摄氏温度 = %.2lf    开氏温度 = %.2lf\n", x, celsius, kelvin);           
+}         
