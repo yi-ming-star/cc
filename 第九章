@@ -1,0 +1,33 @@
+# 打印斐波那契数列
+#include <stdio.h>
+void Fibonacci(int len)
+{
+    int i;
+    unsigned long t, x, y;
+    x = y = 1;
+ 
+    for (i = 0; i < len; i++)
+    {
+        printf("%lu\n", x);
+        t = x + y;
+        x = y;
+        y = t;
+    }
+    return;
+}
+int main(void)
+{
+    int n;
+    printf("Please enter a integer: ");
+    while (scanf("%d", &n) == 1)
+    {
+        printf("Top %d items of Fibonacci sequence:\n", n);
+        Fibonacci(n);
+        printf("You can enter again (<= 0 or q to quit): ");
+    }
+    printf("Done.\n");
+ 
+    return 0;
+}
+---
+# 
