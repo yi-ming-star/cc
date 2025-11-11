@@ -1,4 +1,4 @@
-# 多种输出形式
+# 4.多种输出形式
 #include<stdio.h>    
 int main() {      
     double a;        
@@ -8,7 +8,7 @@ int main() {
     printf("%a\n",a);//p计数法输出        
 }       
 ----
-# 单位转化
+# 8.单位转化
 #include<stdio.h>   
 int main()   
 {    
