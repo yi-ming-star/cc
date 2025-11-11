@@ -1,4 +1,4 @@
-# 数组拷贝
+# 9.数组拷贝
 #include <stdio.h>         
 #define LEN 5             
 void show_arr(const double x[], int n)       
@@ -57,7 +57,7 @@ int main(void)
     return 0;             
 }         
 ---
-# rain.c           
+# 12.rain.c           
 #include <stdio.h>            
 #define MONTHS 12            
 #define YEARS 5             
@@ -111,4 +111,33 @@ int main(void)
     rainfall_aver(rain, YEARS);             
             
     return 0;           
+}        
+---
+# 5.极差
+#include<stdio.h>           
+double fun(double *arr,int len)            
+{          
+    double max = arr[0];         
+    double min = arr[0];          
+    for(int i = 0; i < len; i++) {          
+        if(arr[i]>max) {         
+            max = arr[i];        
+        }        
+        if(arr[i]<min) {          
+            min = arr[i];         
+        }        
+    }          
+    return max-min;          
+}          
+
+int main()        
+{         
+    int n;          
+    scanf("%d",&n);       
+    double arr[n];          
+    for(int i = 0;i < n; i++) {         
+        scanf("%lf",&arr[i]);        
+    }     
+    double ret = fun(arr,n);   
+    printf("%lf",ret);        
 }        
