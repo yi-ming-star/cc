@@ -1,21 +1,21 @@
 # 2.名字输出
-#include<stdio.h>
-#include<stdlib.h>
-int main()
-{
-    char ch[10]="abcEF";
-    printf("\"%s\"\n",ch);//输出双引号
-    printf("\"%20s\"\n",ch);//在宽度为20的字段右端打印
-    printf("\"%-20s\"\n",ch);//在宽度为20的字段左端打印
-   int width = strlen(ch) + 3;
-    printf("\"%-*s\"\n", width, ch);//在宽度为字符宽度加3进行打印
-}
----
-# 8.燃油问题
-#include <stdio.h>      
-#define GALLON_LITRE 3.785         
-int main()          
-{          
+#include<stdio.h>        
+#include<stdlib.h>        
+int main()         
+{         
+    char ch[10]="abcEF";           
+    printf("\"%s\"\n",ch);//输出双引号          
+    printf("\"%20s\"\n",ch);//在宽度为20的字段右端打印      
+    printf("\"%-20s\"\n",ch);//在宽度为20的字段左端打印         
+   int width = strlen(ch) + 3;        
+    printf("\"%-*s\"\n", width, ch);//在宽度为字符宽度加3进行打印       
+}          
+---   
+# 8.燃油问题       
+#include <stdio.h>              
+#define GALLON_LITRE 3.785          
+int main()           
+{           
 	const float MILE_KM = 1.609;       
 	float mileage;        
 	float gasoline;    
@@ -35,8 +35,8 @@ int main()
 	return 0;     
 }        
 ---
-# 7.单精度和双精度
-#include<stdio.h>   
+# 7.单精度和双精度   
+#include<stdio.h>     
 #include<float.h>    
 int main()   
 {   double a=1.0/3.0;   
