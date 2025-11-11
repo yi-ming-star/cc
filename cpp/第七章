@@ -1,1 +1,76 @@
-
+# 7.工资计算
+#include<stdio.h>          
+#define m 10.00       
+#define n 1.5          
+#define a 300.0     
+#define a1 0.15    
+#define b 150.0          
+#define b1  0.20         
+#define c 0.25           
+int main()           
+{double h;          
+scanf("%lf",&h);        
+if(h>=40) {       
+    h=40+(h-40)*n;         
+}        
+double all=h*m;   
+double tax;      
+if(all<=a) {      
+    tax=all*a1;    
+}       
+else if(all<=a+b) {        
+    tax=a*a1+(all-a)*b1;     
+}       
+else {      
+    tax=a*a1+b*b1+(all-a-b)*c;          
+}         
+double salary=all-tax;        
+printf("工资总额：%lf\n",all);          
+printf("税金：%lf\n",tax);        
+printf("净收入：%lf\n",salary);          
+        
+}         
+---
+# 11.购物单
+ #include<stdio.h>          
+ #define a1 2.05     
+ #define b1 1.15         
+ #define c1 1.09         
+ int main()      
+ {double a=0,b=0,c=0,budget=0,pack;     
+    char d;      
+    while(scanf("%c",&d)==1)      
+    {switch(d)         
+    {case 'a' :        
+    scanf("%lf",&a);         
+    break;         
+    case 'b' :      
+    scanf("%lf",&b);    
+    break;      
+    case 'c' :        
+    scanf("%lf",&c);      
+    break;    
+    }         
+    if(d=='q') {      
+        break;        
+    }      
+}      
+double all=a*a1+b*b1+c*c1;        
+if(all>=100) {budget=0.05;}       
+if(a+b+c<=5) {      
+    pack=6.5;      
+} else if(a+b+c<=20) {        
+    pack=14;        
+} else {        
+    pack=14+0.5*(a+b+c-20);        
+}     
+printf("                      购买信息\n");     
+printf("--------------------------------------------------------\n");     
+printf("洋葱：%lf美元/磅 甜菜：%lf美元/磅 胡萝卜：%lf美元/磅\n",a1,b1,c1);        
+printf("重量： 洋葱：%lf 甜菜：%lf 胡萝卜：%lf\n",a,b,c);          
+printf("total=%lf\n",all);       
+printf("折扣：%lf",budget);           
+printf("         运费和包装费：%lf\n",pack);          
+printf("费用总额：%lf\n",all*(1-budget)+pack);          
+printf("---------------------------------------------------------\n");         
+ }        
