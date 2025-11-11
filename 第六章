@@ -16,67 +16,67 @@ int main()
 }
 ---
 # 5.打印字符金字塔
-#include<stdio.h>
-int main()
-{
-    int n;
-    char c;
-    scanf("%d %c",&n,&c);
-    for(int i=0 ; i<n ; i++) {
-        for(int j=n-1-i ; j>0 ; j--) {
-             printf(" ");
-        }
-        for(int k=0 ;k<i+1 ; k++) {
-            c+=k;
-            printf("%c",c);
-            c-=k;
-        }
-        for(int m=i; m>0 ; m--) {
-            c+=m-1;
-            printf("%c",c);
-            c-=m-1;
-        }
-    printf("\n");
-    }
-}
+#include<stdio.h>    
+int main()   
+{       
+    int n;        
+    char c;       
+    scanf("%d %c",&n,&c);       
+    for(int i=0 ; i<n ; i++) {        
+        for(int j=n-1-i ; j>0 ; j--) {      
+             printf(" ");         
+        }         
+        for(int k=0 ;k<i+1 ; k++) {      
+            c+=k;     
+            printf("%c",c);    
+            c-=k;      
+        }      
+        for(int m=i; m>0 ; m--) {     
+            c+=m-1;      
+            printf("%c",c);         
+            c-=m-1;        
+        }        
+    printf("\n");      
+    }       
+}        
 ---
 # 打印空心菱形
-#include<stdio.h>
-#include<stdlib.h>
-int main()
-{
-    int h;
-    char c;
-    scanf("%d %c",&h,&c);
-    int mid=(h-1)/2;
-    for(int i=mid ; i>=-mid ; i--) {
-        for(int j=abs(i) ; j>0 ;j--) {
-            printf(" ");
-        }
-        printf("%c",c+mid-abs(i));
-        for(int k=-1+2*(mid-abs(i)) ;k>0 ; k--) {
-            printf(" ");
-        }
-        if(abs(i)!=mid) printf("%c",c+mid-abs(i));
-        printf("\n"); 
-    }
-}
----
-# 14.求每部分和
-#include<stdio.h>
-int main()
-{
-    double a[8];
-    double b[8];
-    for(int i=0 ; i<8 ; i++) {
-        scanf("%lf",&a[i]);
-        b[i]=a[i];
-    }
-    for(int j=1 ; j<8 ; j++) {
-        b[j]+=b[j-1];
-    }
-    for(int m=0 ; m<8 ; m++) {
-        printf("%lf %lf\n",a[m],b[m]);
-    }
+#include<stdio.h>       
+#include<stdlib.h>    
+int main()     
+{       
+    int h;       
+    char c;       
+    scanf("%d %c",&h,&c);        
+    int mid=(h-1)/2;   
+    for(int i=mid ; i>=-mid ; i--) {      
+        for(int j=abs(i) ; j>0 ;j--) {   
+            printf(" ");    
+        }    
+        printf("%c",c+mid-abs(i));    
+        for(int k=-1+2*(mid-abs(i)) ;k>0 ; k--) {   
+            printf(" ");   
+        }    
+        if(abs(i)!=mid) printf("%c",c+mid-abs(i));   
+        printf("\n");    
+    }   
+}   
+---   
+# 14.求每部分和   
+#include<stdio.h>       
+int main()   
+{     
+    double a[8];          
+    double b[8];         
+    for(int i=0 ; i<8 ; i++) {        
+        scanf("%lf",&a[i]);           
+        b[i]=a[i];         
+    }         
+    for(int j=1 ; j<8 ; j++) {         
+        b[j]+=b[j-1];          
+    }          
+    for(int m=0 ; m<8 ; m++) {         
+        printf("%lf %lf\n",a[m],b[m]);        
+    }          
 
 
