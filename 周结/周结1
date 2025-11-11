@@ -1,1 +1,173 @@
-
+# 中心扩展法
+中心扩展法是从回文中心向两侧扩展的一种算法，用于求解最长回文子串。具体做法是遍历每一个可能的中心，以某一个字符为中心或者与下一个字符构成中心向两侧扩展，并判断扩展的字符串与中心字符串构成的子串是否是回文子串，直到子串不再是回文子串或到达字符边界才停止扩展。该方法需要枚举所有可能的回文中心，并在扩展过程中记录最长的回文子串。       
+---
+# 动态分配输入
+#include <stdio.h>    
+#include <stdlib.h>         
+  
+int main() {                    
+    int *array = NULL;       
+    int capacity = 1;     
+    int size = 0;        
+    int value;        
+    // 分配初始内存         
+    array = (int *)malloc(capacity * sizeof(int));       
+    if (array == NULL) {           
+        printf("Memory allocation failed\n");         
+        return 1;        
+    }
+    // 读取输入
+    while (scanf("%d", &value) == 1) {      
+        if (size == capacity) {       
+            // 扩展内存
+            capacity *= 2;            
+            array = (int *)realloc(array, capacity * sizeof(int));        
+            if (array == NULL) {          
+                printf("Memory reallocation failed\n");     
+                return 1;         
+            }       
+        }    
+        array[size++] = value;    
+    }        
+    // 输出数组元素    
+    for (int i = 0; i < size; i++) {           
+        printf("%d ", array[i]);          
+    }        
+    printf("\n");    
+    // 释放内存      
+    free(array);        
+    return 0;        
+}      
+---
+# 以不同输出形式输出           
+#include<stdio.h>               
+#include<stdlib.h>          
+int main()          
+{         
+    char ch[10]="abcEF";         
+    printf("\"%s\"\n",ch)；          
+    printf("\"%20s\"\n",ch);         
+    printf("\"%-20s\"\n",ch);           
+   int width = strlen(ch) + 3;           
+    printf("\"%-*s\"\n", width, ch);               
+}    
+# qsort排序           
+#include <stdio.h>           
+#include <stdlib.h>         
+                
+// 比较函数，用于比较两个整数的大小              
+int compare_ints(const void* a, const void* b) {                  
+    return (*(int*)a - *(int*)b);             
+}                
+            
+int main() {                 
+    int arr[] = {5, 2, 8, 1, 9};             
+    int n = sizeof(arr) / sizeof(arr[0]);            
+             
+    // 调用 qsort 函数对数组进行排序             
+    qsort(arr, n, sizeof(int), compare_ints);            
+            
+    // 输出排序后的数组            
+    for (int i = 0; i < n; i++) {               
+        printf("%d ", arr[i]);           
+    }            
+    printf("\n");           
+             
+    return 0;             
+}        
+---
+# 使用容差解决精度差            
+#include <stdio.h>           
+#include <math.h>          
+           
+#define FLOAT_EPS (0.000001)            
+#define Float_Equ(a, b) ((fabs((a)-(b)))<(FLOAT_EPS))           
+          
+int main() {            
+    float a = 1.0, b = 1.1, ex = 0.1;      
+    printf("b - a == ex is %s\n", Float_Equ(b - a, ex) ? "true" : "false");        
+    int A = a * 10, B = b * 10, EX = ex * 10;            
+    printf("B - A == EX is %s\n", (B - A == EX) ? "true" : "false");     
+    return 0;             
+}            
+---     
+# 结构体的运用          
+#include <stdio.h>          
+#include <string.h>          
+#include <ctype.h>          
+#define LEN 12           
+struct month           
+{         
+    char name[10];           
+    char abbrev[4];         
+    int days;          
+    int monumb;           
+};          
+const struct month months[LEN] ={{"January", "Jan", 31, 1},{"February", "Feb", 28, 2},{"March", "Mar", 31, 3},
+                                    {"April", "Apr", 30, 4},{"May", "May", 31, 5},{"June", "Jun", 30, 6},
+                                    {"July", "Jul", 31, 7},{"August", "Aug", 31, 8},{"September", "Sep", 30, 9},
+                                    {"October", "Oct", 31, 10},{"November", "Nov", 30, 11},{"December", "Dec", 31, 12}};               
+int days(char* name)          
+{            
+    int i = 1;            
+    int num = 0;          
+    int total = 0;         
+         
+    name[0] = toupper(name[0]);             
+    while (name[i] != '\0')           
+    {             
+        name[i] = tolower(name[i]);            
+        i++;             
+    }            
+    for (i = 0; i < LEN; i++)             
+    {        
+        if (strcmp(name, months[i].name) == 0)           
+        {            
+            num = months[i].monumb;            
+            break;            
+        }              
+    }           
+    if (num == 0)              
+    {             
+        total = -1;             
+    }           
+    else             
+    {             
+        for (i = 0; i < num; i++)            
+        {          
+            total += months[i].days;          
+        }           
+    }             
+    return total;          
+}           
+int main(void)         
+{          
+    int daytotal;         
+    char input[LEN];        
+              
+    printf("Please enter the name of a month (q to quit): ");             
+    while (scanf("%s", input) == 1 && input[0] != 'q')             
+    {           
+        daytotal = days(input);            
+        if (daytotal > 0)            
+        {            
+            printf("There are %d days through %s.\n", daytotal, input);            
+        }          
+        else            
+        {            
+            printf("%s isn't a valid month!\n", input);               
+        }            
+        printf("You can enter again (q to quit): ");           
+        while (getchar() != '\n')          
+            continue;         
+    }            
+    printf("Done.\n");          
+            
+    return 0;           
+}          
+---          
+# 缓冲区          
+缓冲分为两类：完全缓冲I/O和行缓冲I/O              
+完全缓冲输出是指当缓冲区被填满时才刷新缓冲区             
+行缓冲输出是指在出现换行符时刷新缓冲区            
+缓冲区的好处：缓冲区通过批量处理，减少 I/O 请求的频率，降低资源竞争的冲突概率，让系统整体调度更高效。          
