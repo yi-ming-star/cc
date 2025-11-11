@@ -1,5 +1,5 @@
-# 4.多种输出形式
-#include<stdio.h>    
+# 4.多种输出形式         
+#include<stdio.h>     
 int main() {      
     double a;        
     scanf("%lf",&a);        
