@@ -1,54 +1,54 @@
 # 16.字母转化
-#include <stdio.h>
-#include <ctype.h>
-void print_upper(char* str)
-{
-    printf("转换小写字母后的字符串为:");
-    while (*str != '\0')
-    {
-        putchar(toupper(*str++));
-    }
-    printf("\n");
-}
-void print_lower(char* str)
-{
-    printf("转换大写字母后的字符串为:");
-    while (*str != '\0')
-    {
-        putchar(tolower(*str++));
-    }
-    printf("\n");
-}
-int main(int argc, char* argv[])
-{
-    char str[1024] = { 0 };
-    char c = '0';
+#include <stdio.h>          
+#include <ctype.h>          
+void print_upper(char* str)          
+{          
+    printf("转换小写字母后的字符串为:");          
+    while (*str != '\0')         
+    {           
+        putchar(toupper(*str++));        
+    }         
+    printf("\n");        
+}          
+void print_lower(char* str)          
+{           
+    printf("转换大写字母后的字符串为:");        
+    while (*str != '\0')             
+    {          
+        putchar(tolower(*str++));         
+    }      
+    printf("\n");        
+}          
+int main(int argc, char* argv[])          
+{       
+    char str[1024] = { 0 };      
+    char c = '0';        
  
-    printf("请输入字符串和参数(p,u,l):");
-    while (scanf("%s %c", str, &c) != EOF)
-    {
-        switch (c)
-        {
-            case 'p':
-                printf("原来的字符串为:%s\n", str);
-                printf("请输入字符串和参数(p,u,l):");
-                break;
-            case 'u':
-                print_upper(str);
-                printf("请输入字符串和参数(p,u,l):");
-                break;
-            case 'l':
-                print_lower(str);
-                printf("请输入字符串和参数(p,u,l):");
-                break;
-        }
-    }
-    return 0;
-}
+    printf("请输入字符串和参数(p,u,l):");         
+    while (scanf("%s %c", str, &c) != EOF)        
+    {      
+        switch (c)     
+        {          
+            case 'p':         
+                printf("原来的字符串为:%s\n", str);       
+                printf("请输入字符串和参数(p,u,l):");       
+                break;        
+            case 'u':        
+                print_upper(str);         
+                printf("请输入字符串和参数(p,u,l):");          
+                break;     
+            case 'l':        
+                print_lower(str);       
+                printf("请输入字符串和参数(p,u,l):");        
+                break;          
+        }      
+    }       
+    return 0;       
+}         
 ---
-# 7.字符拷贝      
-#include <stdio.h>        
-#include <string.h>           
+# 7.字符拷贝              
+#include <stdio.h>              
+#include <string.h>                   
 #define LEN 11        
 void eatline(void)       
 {       
