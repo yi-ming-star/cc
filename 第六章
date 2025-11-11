@@ -1,4 +1,4 @@
-# 打印字符三角形
+# 3.打印字符三角形
 #include<stdio.h>    
 int main()    
 {     
@@ -15,7 +15,7 @@ int main()
     }
 }
 ---
-# 打印字符金字塔
+# 5.打印字符金字塔
 #include<stdio.h>
 int main()
 {
@@ -62,7 +62,7 @@ int main()
     }
 }
 ---
-# 求每部分和
+# 14.求每部分和
 #include<stdio.h>
 int main()
 {
