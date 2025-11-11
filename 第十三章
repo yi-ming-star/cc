@@ -29,4 +29,34 @@ int main(int argc,char* argv[])
 
 }
 ---
-#
+# 大写转化
+#include <stdio.h>        
+#include <ctype.h>     
+#include <stdlib.h>      
+#define LEN 50         
+           
+int main(int argc, char* argv[]) {             
+    int ch;          
+    FILE* fp;         
+    char filename[LEN];         
+    printf("Please enter a filename: ");            
+    scanf("%s", filename);           
+    fp = fopen(filename, "r+");            
+    if (fp == NULL) {             
+        printf("Can't open %s\n", filename);             
+        exit(0);         
+    }              
+    while ((ch = getc(fp)) != EOF) {          
+        fseek(fp, -1L, SEEK_CUR);            
+        putc(toupper(ch), fp);           
+    }            
+    rewind(fp);         
+    printf("File %s:\n", filename);      
+    while ((ch = getc(fp)) != EOF) {      
+        putchar(ch);       
+    }        
+    printf("\n");     
+    fclose(fp);          
+          
+    return 0;        
+}         
