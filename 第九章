@@ -1,37 +1,37 @@
 # 11.打印斐波那契数列
-#include <stdio.h>
-void Fibonacci(int len)
-{
-    int i;
-    unsigned long t, x, y;
-    x = y = 1;
- 
-    for (i = 0; i < len; i++)
-    {
-        printf("%lu\n", x);
-        t = x + y;
-        x = y;
-        y = t;
-    }
-    return;
-}
-int main(void)
-{
-    int n;
-    printf("Please enter a integer: ");
-    while (scanf("%d", &n) == 1)
-    {
-        printf("Top %d items of Fibonacci sequence:\n", n);
-        Fibonacci(n);
-        printf("You can enter again (<= 0 or q to quit): ");
-    }
-    printf("Done.\n");
- 
-    return 0;
-}
+#include <stdio.h>    
+void Fibonacci(int len)   
+{     
+    int i;    
+    unsigned long t, x, y;      
+    x = y = 1;     
+             
+    for (i = 0; i < len; i++)       
+    {            
+        printf("%lu\n", x);         
+        t = x + y;       
+        x = y;      
+        y = t;       
+    }    
+    return;     
+}      
+int main(void)    
+{       
+    int n;        
+    printf("Please enter a integer: ");       
+    while (scanf("%d", &n) == 1)         
+    {          
+        printf("Top %d items of Fibonacci sequence:\n", n);      
+        Fibonacci(n);              
+        printf("You can enter again (<= 0 or q to quit): ");           
+    }          
+    printf("Done.\n");        
+         
+    return 0;          
+}        
 ---
 # 9.幂数计算器             
-#include <stdio.h>            
+#include <stdio.h>             
 double power(double n, int p)           
 {             
     double pow = 1.0;             
@@ -68,32 +68,31 @@ int main(void)
     printf(" to which\nthe number will be raised. Enter q");           
     printf(" to quit.\n");        
     while (scanf("%lf %d", &x, &exp) == 2)       
-    {           
+    {            
         xpow = power(x, exp);            
         printf("%.3g to the power %d is %.5g.\n", x, exp, xpow);         
         printf("Enter next pair of numbers or q to quit.\n");             
     }                  
-    printf("Hope you enjoyed this power trip -- bye!\n");         
           
     return 0;          
 }     
 ---
 # 4.调和平均数
-#include<stdio.h>
-
-double fun(double *a, double *b) {
-    if (*a == 0 || *b == 0) {
-        return 0;
-    }
-    double ave = (1/(*a)+1/(*b))/2;
-    return 1/ave;
-}
-
-int main() {
-    double x, y;
-    scanf("%lf %lf", &x, &y);
-    double ret = fun(&x, &y);
-    printf("%lf", ret);
-    return 0;
-}
+#include<stdio.h>         
+            
+double fun(double *a, double *b) {            
+    if (*a == 0 || *b == 0) {         
+        return 0;          
+    }            
+    double ave = (1/(*a)+1/(*b))/2;          
+    return 1/ave;            
+}        
+       
+int main() {          
+    double x, y;          
+    scanf("%lf %lf", &x, &y);        
+    double ret = fun(&x, &y);         
+    printf("%lf", ret);        
+    return 0;         
+}         
 
