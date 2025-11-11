@@ -1,4 +1,4 @@
-# 函数调用次数
+# 4.函数调用次数
 #include <stdio.h>
 int fun1(int *count) {
     return (*count)++;
@@ -13,7 +13,7 @@ int main() {
     return 0;
 }
 ---
-# 随机数排序
+# 5.随机数排序
 #include<stdio.h>
 #include<stdlib.h>
 #include<time.h>
@@ -48,7 +48,7 @@ int main() {
     return 0;
 }
 ---
-# 打印输入的单词
+# 9.打印输入的单词
 #include <stdio.h>
 #include <string.h>
 #include <stdlib.h>
@@ -71,8 +71,7 @@ int main(void)
             pt[i] = (char*)malloc(length * sizeof(char));
             if (NULL == pt[i])
             {
-                printf("Memory allocation failed!\n");
-                exit(EXIT_FAILURE);
+                exit(0);
             }
             strcpy(pt[i], temp);
         }
@@ -88,8 +87,7 @@ int main(void)
     }
     else
     {
-        printf("Memory allocation failed!\n");
-        exit(EXIT_FAILURE);
+        exit(0);
     }
  
     return 0;
