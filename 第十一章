@@ -1,4 +1,4 @@
-# 字母转化
+# 16.字母转化
 #include <stdio.h>
 #include <ctype.h>
 void print_upper(char* str)
@@ -46,7 +46,7 @@ int main(int argc, char* argv[])
     return 0;
 }
 ---
-# 字符拷贝      
+# 7.字符拷贝      
 #include <stdio.h>        
 #include <string.h>           
 #define LEN 11        
@@ -108,7 +108,18 @@ char* mystrncpy(char* dest, char* src, int n)
         printf("Target string: %s\n", mystrncpy(target, source, len));         
         printf("You can enter a string again (EOF to quit):\n");        
     }        
-    printf("Done.\n");          
+    printf("Done.\n");    
             
     return 0;          
-}            
+}      
+---
+# 15.atoi    
+#include<stdio.h>        
+#include<string.h>           
+int main()         
+{         
+    char a[] = "hdiwhwuhd123";      
+    char b[] = "123456";         
+    char c[] = "1235ndujhbj";            
+    printf("%d %d %d",atoi(a),atoi(b),atoi(c));            
+}         
