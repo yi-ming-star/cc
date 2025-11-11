@@ -1,4 +1,4 @@
-# 名字输出
+# 2.名字输出
 #include<stdio.h>
 #include<stdlib.h>
 int main()
@@ -11,7 +11,7 @@ int main()
     printf("\"%-*s\"\n", width, ch);//在宽度为字符宽度加3进行打印
 }
 ---
-# 燃油问题
+# 8.燃油问题
 #include <stdio.h>      
 #define GALLON_LITRE 3.785         
 int main()          
@@ -35,7 +35,7 @@ int main()
 	return 0;     
 }        
 ---
-# 单精度和双精度
+# 7.单精度和双精度
 #include<stdio.h>   
 #include<float.h>    
 int main()   
