@@ -1,0 +1,119 @@
+# 数组循环右移
+#include<stdio.h>          
+#include<string.h>            
+             
+int main() {               
+    int m, n;               
+    scanf("%d %d", &m, &n);             
+    int arr[100][100];              
+    for(int i = 0; i < n; i++) {              
+        for(int j = 0; j < n; j++) {               
+            scanf("%d", &arr[i][j]);             
+    }               
+               
+    int t = m % n;              
+    if (t < 0) t += n;               
+    for(int i = 0; i < n; i++) {            
+        for(int j = n - t; j < n; j++) {           
+            printf("%d ", arr[i][j]);            
+        }            
+        for(int l = 0; l < n - t; l++) {              
+            printf("%d ", arr[i][l]);            
+        }          
+        printf("\n");            
+    }            
+             
+    return 0;           
+}          
+---
+# 九宫格
+#include<stdio.h>           
+#include <string.h>          
+int checkRow(int (*grid)[9]) {          
+    int count[10];           
+    for (int i = 0; i < 9; i++) {             
+        memset(count, 0, sizeof(count));           
+        for (int j = 0; j < 9; j++) {           
+            int num = grid[i][j];           
+            if (num < 1 || num > 9) return 0;           
+            if (count[num]++) return 0;         
+        }         
+    }         
+    return 1;        
+}          
+int checkCol(int (*grid)[9]) {           
+    int count[10];         
+    for (int j = 0; j < 9; j++) {         
+        memset(count, 0, sizeof(count));         
+        for (int i = 0; i < 9; i++) {        
+            int num = grid[i][j];          
+            if (num < 1 || num > 9) return 0;      
+            if (count[num]++) return 0;          
+        }       
+    }       
+    return 1;        
+}           
+int checkSubgrid(int (*grid)[9]) {          
+    int count[10];           
+    for (int i = 0; i < 9; i += 3) {           
+        for (int j = 0; j < 9; j += 3) {          
+            memset(count, 0, sizeof(count));          
+            for (int x = 0; x < 3; x++) {         
+                for (int y = 0; y < 3; y++) {          
+                    int num = grid[i + x][j + y];       
+                    if (num < 1 || num > 9) return 0;          
+                    if (count[num]++) return 0;       
+                }           
+            }         
+        }         
+    }        
+    return 1;        
+}       
+        
+int main() {         
+    int n;         
+    scanf("%d", &n);         
+    int grid[9][9];          
+              
+    for (int cnt = 0; cnt < n; cnt++) {         
+        for (int i = 0; i < 9; i++) {        
+            for (int j = 0; j < 9; j++) {          
+                scanf("%d", &grid[i][j]);          
+            }         
+        }         
+        int valid = checkRow(grid) && checkCol(grid) && checkSubgrid(grid);         
+        printf("%d\n", valid ? 1 : 0);         
+    }         
+              
+    return 0;          
+}         
+---
+# 动态规划
+动态规划（Dynamic Programming，简称 DP）是一种通过分解问题、存储中间结果来高效解决多阶段决策问题的方法。它的核心思想是“避免重复计算”，适用于具有重叠子问题和最优子结构的问题。     
+---
+# myatoi    
+int myAtoi(char* s) {     
+    int i = 0;      
+    while(s[i] == ' ') {     
+        i++;    
+    }     
+
+    int sign = 1;     
+    if(s[i] == '+' || s[i] == '-') {     
+        sign = s[i] =='+' ? 1 : -1;     
+        i++;     
+    }      
+
+    int num = 0;     
+    for(; '0' <= s[i] && s[i] <= '9'; i++) {      
+        int d = s[i] - '0';     
+        if(num > INT_MAX / 10 || num*10 > INT_MAX-d) {     
+            return sign > 0 ? INT_MAX : INT_MIN;    
+        }      
+        num = num*10+d;    
+    }    
+      
+    return sign*num;     
+}      
+   
+
